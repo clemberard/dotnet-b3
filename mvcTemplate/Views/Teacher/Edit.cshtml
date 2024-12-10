@@ -1,0 +1,33 @@
+@model Teacher
+
+<h1>Modifier l'enseignant</h1>
+
+<form asp-action="Update">
+  <input type="hidden" asp-for="Id" />
+  <div class="form-group">
+    <label asp-for="Lastname"></label>
+    <input asp-for="Lastname" class="form-control" value="@Model.Lastname" />
+    <span asp-validation-for="Lastname" class="text-danger"></span>
+  </div>
+  <div class="form-group">
+    <label asp-for="Firstname"></label>
+    <input asp-for="Firstname" class="form-control" value="@Model.Firstname" />
+    <span asp-validation-for="Firstname" class="text-danger"></span>
+  </div>
+  <div class="form-group">
+    <label asp-for="Age"></label>
+    <input asp-for="Age" class="form-control" value="@Model.Age" />
+    <span asp-validation-for="Age" class="text-danger"></span>
+  </div>
+  <div class="form-group">
+    <label asp-for="Field"></label>
+    <input asp-for="Field" class="form-control" value="@Model.Field" />
+    <span asp-validation-for="Field" class="text-danger"></span>
+  </div>
+  <div class="form-group">
+    <label asp-for="Salary"></label>
+    <input asp-for="Salary" class="form-control" value="@Model.Salary" />
+    <span asp-validation-for="Salary" class="text-danger"></span>
+  </div>
+  <button type="submit" class="btn btn-primary">Modifier l'enseignant</button>
+</form>

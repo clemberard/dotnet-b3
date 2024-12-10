@@ -1,0 +1,34 @@
+@model Teacher
+
+<h2>Ajouter un nouvel enseignant</h2>
+
+<form asp-action="Add">
+  <div class="form-group">
+    <label asp-for="Lastname"></label>
+    <input asp-for="Lastname" class="form-control" />
+    <span asp-validation-for="Lastname" class="text-danger"></span>
+  </div>
+  <div class="form-group">
+    <label asp-for="Firstname"></label>
+    <input asp-for="Firstname" class="form-control" />
+    <span asp-validation-for="Firstname" class="text-danger"></span>
+  </div>
+  <div class="form-group">
+    <label asp-for="Age"></label>
+    <input asp-for="Age" class="form-control" />
+    <span asp-validation-for="Age" class="text-danger"></span>
+  </div>
+  <div class="form-group">
+    <label asp-for="Field"></label>
+    <input asp-for="Field" class="form-control" />
+    <span asp-validation-for="Field" class="text-danger"></span>
+  </div>
+  <div class="form-group">
+    <label asp-for="Salary"></label>
+    <input asp-for="Salary" class="form-control" />
+    <span asp-validation-for="Salary" class="text-danger"></span>
+  </div>
+  <button type="submit" class="btn btn-primary">Ajouter le professeur</button>
+</form>
+
+<a asp-action="Index">Retour à la Liste</a>
