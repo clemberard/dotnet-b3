@@ -1,5 +1,6 @@
 
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
 
 namespace mvc.Models;
 
@@ -8,11 +9,11 @@ public enum Field
     MATHS, ENGLISH, CS, BIOLOGY, CHEMISTRY, PHYSICS
 }
 
-public class Teacher
+public class Teacher : IdentityUser
 {
 
-    [Required]
-    public int Id { get; set; }
+    // [Required]
+    // public int Id { get; set; }
 
     [StringLength(50, MinimumLength = 3)]
     public string Firstname { get; set; }
