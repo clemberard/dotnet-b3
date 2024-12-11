@@ -11,72 +11,73 @@ namespace mvc.Controllers
         // champ prive pour stocker le dbcontext
         private readonly ApplicationDbContext _context;
 
-        // liste d'enseignants
-        // private static List<Teacher> teachers = new List<Teacher>
-        // {
-        //     new Teacher { Id = "1", Lastname = "Doe", Firstname = "John" },
-        //     new Teacher { Id = "2", Lastname = "Smith", Firstname = "Jane" }
-        // };
-        // Creation d'une liste statique de Student
         public TeacherController(ApplicationDbContext context)
         {
             _context = context;
         }
-        // GET: StudentController
-        // public ActionResult Index()
-        // {
-        //     return View(teachers);
-        // }
+        
+        public ActionResult Index()
+        {
+            return View(getTeachers());
+        }
 
-        // public IActionResult Show(int id)
-        // {
-        //     var teacher = _context.Teachers.Find(id);
-        //     return View(teacher);
-        // }
+        public IActionResult Show(string id)
+        {
+            var teacher = _context.Teachers.Find(id);
+            return View(teacher);
+        }
 
         public ActionResult New()
         {
             return View();
         }
 
-        // public ActionResult Edit(int id)
-        // {
-        //     Teacher teacher = teachers.Find(teacher => teacher.Id == id);
-        //     return View(teacher);
-        // }
+        public ActionResult Edit(string id)
+        {
+            Teacher teacher = _context.Teachers.Find(id);
+            return View(teacher);
+        }
 
-        // public ActionResult Delete(int id)
-        // {
-        //     Teacher teacher = teachers.Find(teacher => teacher.Id == id);
-        //     teachers.Remove(teacher);
+        public ActionResult Delete(string id)
+        {
+            Teacher teacher = _context.Teachers.Find(id);
+            _context.Teachers.Remove(teacher);
 
-        //     return RedirectToAction("Index");
-        // }
+            _context.SaveChanges();
 
-        // [HttpPost]
-        // public ActionResult Update(Teacher teacher)
-        // {
-        //     Teacher teacherToUpdate = teachers.Find(item => item.Id == teacher.Id);
-        //     teacherToUpdate.Firstname = teacher.Firstname;
-        //     teacherToUpdate.Lastname = teacher.Lastname;
-        //     teacherToUpdate.Age = teacher.Age;
-        //     teacherToUpdate.Field = teacher.Field;
-        //     teacherToUpdate.Salary = teacher.Salary;
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult Update(Teacher teacher)
+        {
+            Teacher teacherToUpdate = _context.Teachers.Find(teacher.Id);
+            teacherToUpdate.Firstname = teacher.Firstname;
+            teacherToUpdate.Lastname = teacher.Lastname;
+            teacherToUpdate.Age = teacher.Age;
+            teacherToUpdate.Field = teacher.Field;
+            teacherToUpdate.Salary = teacher.Salary;
+
+            _context.SaveChanges();
             
-        //     return RedirectToAction("Index");
-        // }
+            return RedirectToAction("Index");
+        }
 
-        // [HttpPost]
-        // public IActionResult Add(Teacher teacher)
-        // {
-        //     if (!ModelState.IsValid)
-        //     {
-        //         return RedirectToAction("New");
-        //     }
-        //     _context.Teachers.Add(teacher);
+        [HttpPost]
+        public IActionResult Add(Teacher teacher)
+        {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("New");
+            }
+            _context.Teachers.Add(teacher);
 
-        //     _context.SaveChanges();
-        //     return RedirectToAction("Index");
-        // }
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        private List<Teacher> getTeachers()
+        {
+            return _context.Teachers.ToList();
+        }
     }
 }
