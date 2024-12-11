@@ -7,24 +7,19 @@ namespace mvc.Controllers
     public class TeacherController : Controller
     {
         // Creation d'une liste statique de Student
-        private static List<Teacher> teachers = new()
+        public TeacherController(ApplicationDbContext context)
         {
-            new() { Id = 1, Firstname = "John", Lastname = "Doe", Age = 25, Field = Field.MATHS, Salary = 2000 },
-            new() { Id = 2, Firstname = "Jane", Lastname = "Doe", Age = 24, Field = Field.ENGLISH, Salary = 2500 },
-            new() { Id = 3, Firstname = "James", Lastname = "Doe", Age = 23, Field = Field.CS, Salary = 3000 },
-            new() { Id = 4, Firstname = "Judy", Lastname = "Doe", Age = 22, Field = Field.BIOLOGY, Salary = 3500 },
-            new() { Id = 5, Firstname = "Jack", Lastname = "Doe", Age = 21, Field = Field.CHEMISTRY, Salary = 4000 },
-            new() { Id = 6, Firstname = "Jill", Lastname = "Doe", Age = 20, Field = Field.PHYSICS, Salary = 4500 },
-        };
+            _context = context;
+        }
         // GET: StudentController
         public ActionResult Index()
         {
             return View(teachers);
         }
 
-        public ActionResult Show(int id)
+        public IActionResult Show(int id)
         {
-            Teacher teacher = teachers.Find(teacher => teacher.Id == id);
+            var teacher = _context.Teachers.Find(id);
             return View(teacher);
         }
 
@@ -63,9 +58,16 @@ namespace mvc.Controllers
         [HttpPost]
         public IActionResult Add(Teacher teacher)
         {
-            teacher.Id = teachers.Max(teacher => teacher.Id) + 1;
-            teachers.Add(teacher);
+            // Declencher le mecanisme de validation
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            // Ajouter le teacher
+            _context.Teachers.Add(teacher);
 
+            // Sauvegarder les changements
+            _context.SaveChanges();
             return RedirectToAction("Index");
         }
     }
