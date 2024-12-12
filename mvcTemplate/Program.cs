@@ -17,17 +17,16 @@ builder.Services.AddDbContext<ApplicationDbContext>(
     )
 );
 
-builder.Services.AddIdentity<Teacher, IdentityRole>(options => 
-{
-    options.SignIn.RequireConfirmedAccount = false;
-    options.Password.RequireDigit = true;
-    options.Password.RequireLowercase = true;
-    options.Password.RequireNonAlphanumeric = true;
-    options.Password.RequireUppercase = true;
-    options.Password.RequiredLength = 8;
+builder.Services.AddDefaultIdentity<Account>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddEntityFrameworkStores<ApplicationDbContext>();
 
-    options.User.RequireUniqueEmail = true;
-}).AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddIdentityCore<Teacher>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddSignInManager<SignInManager<Teacher>>()
+    .AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.AddIdentityCore<Student>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddSignInManager<SignInManager<Student>>()
+    .AddEntityFrameworkStores<ApplicationDbContext>();
 
 var app = builder.Build();
 

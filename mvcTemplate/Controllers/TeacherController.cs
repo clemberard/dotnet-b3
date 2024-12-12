@@ -8,7 +8,6 @@ namespace mvc.Controllers
 {
     public class TeacherController : Controller
     {
-        // champ prive pour stocker le dbcontext
         private readonly ApplicationDbContext _context;
 
         public TeacherController(ApplicationDbContext context)
@@ -27,7 +26,7 @@ namespace mvc.Controllers
             return View(teacher);
         }
 
-        public ActionResult New()
+        public ActionResult Add()
         {
             return View();
         }
@@ -51,6 +50,11 @@ namespace mvc.Controllers
         [HttpPost]
         public ActionResult Update(Teacher teacher)
         {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Edit", teacher);
+            }
+
             Teacher teacherToUpdate = _context.Teachers.Find(teacher.Id);
             teacherToUpdate.Firstname = teacher.Firstname;
             teacherToUpdate.Lastname = teacher.Lastname;
@@ -68,13 +72,14 @@ namespace mvc.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return RedirectToAction("New");
+                return View(teacher);
             }
             _context.Teachers.Add(teacher);
-
             _context.SaveChanges();
+             
             return RedirectToAction("Index");
         }
+
         private List<Teacher> getTeachers()
         {
             return _context.Teachers.ToList();

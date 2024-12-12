@@ -9,17 +9,12 @@ public enum Field
     MATHS, ENGLISH, CS, BIOLOGY, CHEMISTRY, PHYSICS
 }
 
-public class Teacher : IdentityUser
+public class Teacher : Account
 {
 
     // [Required]
     // public int Id { get; set; }
 
-    [StringLength(50, MinimumLength = 3)]
-    public string Firstname { get; set; }
-    public string Lastname { get; set; }
-
-    public int Age { get; set; }
 
     public Field Field { get; set; }
 

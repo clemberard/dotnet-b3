@@ -1,10 +1,10 @@
-@model AccountViewModel
+@model AccountViewModelStudent
 
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
-            <h2>Register</h2>
-            <form asp-controller="Account" asp-action="Register" method="post">
+            <h2>Créer un étudiant</h2>
+            <form asp-controller="Account" asp-action="RegisterStudent" method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="Firstname"></label>
@@ -17,9 +17,9 @@
                     <span asp-validation-for="Lastname" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Email"></label>
-                    <input asp-for="Email" class="form-control" />
-                    <span asp-validation-for="Email" class="text-danger"></span>
+                    <label asp-for="Age"></label>
+                    <input asp-for="Age" class="form-control" />
+                    <span asp-validation-for="Age" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Password"></label>
@@ -32,7 +32,7 @@
                     <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Register</button>
+                    <button type="submit" class="btn btn-primary">Créer</button>
                 </div>
             </form>
         </div>

@@ -1,42 +1,103 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<Event>
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity.EntityFrameworkCore
+@using mvc.Models
+@inject SignInManager<Teacher> SignInManager
+@inject UserManager<Teacher> UserManager
+
+
+@{
+    ViewData["Title"] = "Events";
+    var images = new[] { "event1.jpg", "event2.jpg", "event3.jpg", "event4.jpg" };
 }
 
-<section class="py-5" id="about">
-    <div class="container px-4">
-        <div class="row gx-4 justify-content-center">
-            <div class="col-lg-8">
-                <h2>About this page</h2>
-                <p class="lead">This is a great place to talk about your webpage. This template is purposefully unstyled so you can use it as a boilerplate or starting point for you own landing page designs! This template features:</p>
-                <ul>
-                    <li>Clickable nav links that smooth scroll to page sections</li>
-                    <li>Responsive behavior when clicking nav links perfect for a one page website</li>
-                    <li>Bootstrap's scrollspy feature which highlights which section of the page you're on in the navbar</li>
-                    <li>Minimal custom CSS so you are free to explore your own unique design options</li>
-                </ul>
-            </div>
+<div class="container">
+    <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark mb-5">
+        <div class="col-md-6 px-0">
+            <h1 class="display-4 font-italic">Les évènements du campus !</h1>
+            <p class="lead my-3">Découvrez les évènements à venir sur le campus de l'Université de Lapland !</p>
         </div>
     </div>
-</section>
 
-<section class="bg-light py-5" id="services">
-    <div class="container px-4">
-        <div class="row gx-4 justify-content-center">
-            <div class="col-lg-8">
-                <h2>Services we offer</h2>
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore ut velit dignissimos.</p>
+    <div class="row mb-2">
+        <div class="col-md-6">
+            @{
+                var random = new Random();
+                var randomImage = images[random.Next(images.Length)];
+            }
+            <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                <div class="card-body d-flex flex-column align-items-start">
+                    <strong class="d-inline-block mb-2 text-primary">Nouveau</strong>
+                    <h3 class="mb-0">
+                        <a class="text-dark" asp-action="Details"
+                           asp-route-id="@Model.LastOrDefault()?.Id">@Model.LastOrDefault()?.Title</a>
+                    </h3>
+                    <div class="mb-1 text-muted">@Model.LastOrDefault()?.EventDate.ToString("MMM dd")</div>
+                    <p class="card-text mb-auto">@Model.LastOrDefault()?.Description</p>
+                    <a asp-controller="Event" asp-action="Details" asp-route-id="@Model.LastOrDefault()?.Id">Plus de
+                        détails ...</a>
+                </div>
+                <img class="card-img-right flex-auto d-none d-md-block" alt="Image fete" src="~/images/@randomImage"
+                     data-holder-rendered="true" style="width: 200px; height: 250px;">
+            </div>
+        </div>
+        <div class="col-md-6">
+            @{
+                var random2 = new Random();
+                var randomImage2 = images[random.Next(images.Length)];
+                var closestEvent = Model
+                    .Where(e => e.EventDate >= DateTime.Now)
+                    .OrderBy(e => e.EventDate)
+                    .FirstOrDefault();
+            }
+            <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                <div class="card-body d-flex flex-column align-items-start">
+                    <strong class="d-inline-block mb-2 text-success">Prochain</strong>
+                    <h3 class="mb-0">
+                        <a class="text-dark" asp-action="Details"
+                           asp-route-id="@closestEvent?.Id">@closestEvent?.Title</a>
+                    </h3>
+                    <div class="mb-1 text-muted">@closestEvent?.EventDate.ToString("MMM dd")</div>
+                    <p class="card-text mb-auto">@closestEvent?.Description</p>
+                    <a asp-controller="Event" asp-action="Details" asp-route-id="@closestEvent?.Id">Plus de détails
+                        ...</a>
+                </div>
+                <img class="card-img-right flex-auto d-none d-md-block" alt="Image fete" src="~/images/@randomImage2"
+                     data-holder-rendered="true" style="width: 200px; height: 250px;">
             </div>
         </div>
     </div>
-</section>
 
-<section class="py-5" id="contact">
-    <div class="container px-4">
-        <div class="row gx-4 justify-content-center">
-            <div class="col-lg-8">
-                <h2>Contact us</h2>
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
+    <h2>
+        Liste de tous les évènements
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <a asp-controller="Event" asp-action="Index" class="btn btn-sm btn-outline-secondary">Gérer les
+                evenements</a>
+        }
+    </h2>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            var randomList = new Random();
+            var randomImageList = images[random.Next(images.Length)];
+            <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                    <img class="card-img-top" src="~/images/@randomImageList" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Title</h5>
+                        <p class="card-text">@item.Description</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a asp-controller="Event" asp-action="Details" asp-route-id="@item.Id"
+                                   class="btn btn-sm btn-outline-secondary">Voir</a>
+                            </div>
+                            <small class="text-muted">@item.EventDate.ToString("MMM dd")</small>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        }
     </div>
-</section>
+</div>

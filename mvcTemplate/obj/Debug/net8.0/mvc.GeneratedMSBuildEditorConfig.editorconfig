@@ -18,12 +18,36 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/clementberard/cours-b3/dotnet/mvcTemplate
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/clementberard/cours-b3/dotnet/mvcTemplate/Views/Account/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
+[/Users/clementberard/cours-b3/dotnet/mvcTemplate/Views/Account/LoginStudent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpblN0dWRlbnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/clementberard/cours-b3/dotnet/mvcTemplate/Views/Account/Register.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9SZWdpc3Rlci5jc2h0bWw=
+[/Users/clementberard/cours-b3/dotnet/mvcTemplate/Views/Account/LoginTeacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpblRlYWNoZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/clementberard/cours-b3/dotnet/mvcTemplate/Views/Account/RegisterStudent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9SZWdpc3RlclN0dWRlbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/clementberard/cours-b3/dotnet/mvcTemplate/Views/Account/RegisterTeacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9SZWdpc3RlclRlYWNoZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/clementberard/cours-b3/dotnet/mvcTemplate/Views/Event/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXZlbnQvQWRkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/clementberard/cours-b3/dotnet/mvcTemplate/Views/Event/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXZlbnQvRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/clementberard/cours-b3/dotnet/mvcTemplate/Views/Event/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXZlbnQvRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/clementberard/cours-b3/dotnet/mvcTemplate/Views/Event/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXZlbnQvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/clementberard/cours-b3/dotnet/mvcTemplate/Views/Home/Index.cshtml]
@@ -50,16 +74,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3R1ZGVudC9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/clementberard/cours-b3/dotnet/mvcTemplate/Views/Teacher/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVhY2hlci9BZGQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/clementberard/cours-b3/dotnet/mvcTemplate/Views/Teacher/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVhY2hlci9FZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/clementberard/cours-b3/dotnet/mvcTemplate/Views/Teacher/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVhY2hlci9JbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/clementberard/cours-b3/dotnet/mvcTemplate/Views/Teacher/New.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVhY2hlci9OZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/clementberard/cours-b3/dotnet/mvcTemplate/Views/Teacher/Show.cshtml]

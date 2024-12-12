@@ -13,6 +13,22 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
+      "Id": "/Users/clementberard/cours-b3/dotnet/mvcTemplate/wwwroot/images/event1.jpg",
+      "PackagePath": "staticwebassets/images/event1.jpg"
+    },
+    {
+      "Id": "/Users/clementberard/cours-b3/dotnet/mvcTemplate/wwwroot/images/event2.jpg",
+      "PackagePath": "staticwebassets/images/event2.jpg"
+    },
+    {
+      "Id": "/Users/clementberard/cours-b3/dotnet/mvcTemplate/wwwroot/images/event3.jpg",
+      "PackagePath": "staticwebassets/images/event3.jpg"
+    },
+    {
+      "Id": "/Users/clementberard/cours-b3/dotnet/mvcTemplate/wwwroot/images/event4.jpg",
+      "PackagePath": "staticwebassets/images/event4.jpg"
+    },
+    {
       "Id": "/Users/clementberard/cours-b3/dotnet/mvcTemplate/wwwroot/js/site.js",
       "PackagePath": "staticwebassets/js/site.js"
     },

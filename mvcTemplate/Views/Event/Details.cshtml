@@ -1,0 +1,36 @@
+@{
+    var images = new[] { "event1.jpg", "event2.jpg", "event3.jpg", "event4.jpg" };
+    var random = new Random();
+    var randomImage = images[random.Next(images.Length)];
+}
+
+<a asp-action="Index">Retour à la Liste</a>
+
+<div class="card rounded-2 overflow-hidden">
+    <div class="position-relative">
+        <img src="~/images/@randomImage" class="card-img-top rounded-0 object-fit-cover" alt="matdash-img" height="440">
+    </div>
+    <div class="card-body p-4">
+        <h1 class="fs-9 fw-semibold my-4">@Model.Title</h1>
+        <div class="d-flex align-items-center gap-4">
+            <div class="d-flex align-items-center fs-2 ms-auto">
+                <span class="text-dark">@Model.EventDate</span>
+            </div>
+        </div>
+    </div>
+    <div class="card-body border-top p-4">
+        <p class="mb-3">@Model.Description</p>
+        <div class="d-flex align-items-center gap-4">
+            <div class="d-flex align-items-center ms-auto">
+                <span class="text-dark">À @Model.Location</span>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer border-top p-4">
+        <div class="d-flex align-items-center gap-4">
+            <div class="d-flex align-items-center ms-auto">
+                <span class="text-dark">Nombre maximum de participants : @Model.MaxParticipants</span>
+            </div>
+        </div>
+    </div>
+</div>

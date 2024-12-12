@@ -2,8 +2,8 @@
 @using Microsoft.AspNetCore.Identity.EntityFrameworkCore
 @using mvc.Models
 
-@inject SignInManager<Teacher> SignInManager
-@inject UserManager<Teacher> UserManager
+@inject SignInManager<Account> SignInManager
+@inject UserManager<Account> UserManager
 
 @if (SignInManager.IsSignedIn(User))
 {
@@ -20,6 +20,7 @@
 }
 else
 {
-    <a class="btn btn-success" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
-    <a class="btn btn-light" asp-area="" asp-controller="Account" asp-action="Login">Log in</a>
+    <a class="btn btn-success" asp-area="" asp-controller="Account" asp-action="RegisterTeacher">Register</a>
+    <a class="btn btn-light" asp-area="" asp-controller="Account" asp-action="LoginTeacher">Log in Teacher</a>
+    <a class="btn btn-light" asp-area="" asp-controller="Account" asp-action="LoginStudent">Log in Student</a>
 }

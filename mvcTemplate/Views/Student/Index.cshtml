@@ -1,10 +1,49 @@
 @model IEnumerable<Student>
 
-<h1>Bonjour depuis /Student/Index</h1>
-<p>Voici les informations de l'étudiant:</p>
-<ul>
-    @foreach (var student in Model)
+@{
+    ViewData["Title"] = "Students";
+}
+
+<h1>Étudiants</h1>
+
+<p>
+    <a class="btn btn-success" asp-area="" asp-controller="Account" asp-action="RegisterStudent">Créer un étudiant</a>
+</p>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            Prénom
+        </th>
+        <th>
+            Nom
+        </th>
+        <th>
+            Age
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
     {
-        <li>@student.Firstname @student.Lastname</li>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Firstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                <a class="" asp-action="Edit" asp-route-id="@item.Id">Modifier</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Détails</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Supprimer</a>
+            </td>
+        </tr>
     }
-</ul>
+    </tbody>
+</table>

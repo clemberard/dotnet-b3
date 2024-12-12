@@ -1,0 +1,74 @@
+@model IEnumerable<Event>
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity.EntityFrameworkCore
+@using mvc.Models
+
+@inject SignInManager<Teacher> SignInManager
+@inject UserManager<Teacher> UserManager
+
+@{
+    ViewData["Title"] = "Evenements";
+}
+
+@if (@TempData["Notification"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["Notification"]
+    </div>
+}
+
+<h1>Evenements</h1>
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <a asp-action="Add" class="btn btn-primary">Création d'un nouvel evenement</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Titre
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Date
+                </th>
+                <th>
+                    Nombres des participants max    
+                </th>
+                <th>
+                    Lieu
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaxParticipants)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>
+                    <a class="btn btn-light" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

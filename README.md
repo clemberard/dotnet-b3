@@ -27,6 +27,10 @@ Un espace de nom est un moyen de regrouper des classes, des structures, des inte
 
 Permet de faciliter l'import/export du code source.
 
+### Qu'est ce qu'une viewModel ?
+
+Une ViewModel est une classe qui contient les données nécessaires à une vue. Elle est utilisée pour transmettre des données entre les contrôleurs et les vues.
+
 ## Methodes des controllers
 
 Les méthodes des controllers sont des actions qui sont appelées par les routes.
